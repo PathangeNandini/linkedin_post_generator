@@ -5,11 +5,11 @@ few_shot = FewShotPosts()
 
 def get_length_str(length):
     if length =="Short":
-        return "1 to 8 lines"
+        return "1 to 5 lines"
     if length=="Medium":
-        return "8 to 12 lines"
+        return "5 to 10 lines"
     if length =="Long":
-        return "12 to 18 lines"
+        return "10 to 15 lines"
 
 def get_prompt(length, language, tag, tone):
     length_str = get_length_str(length)
@@ -54,4 +54,5 @@ def generate_hashtags(text):
 
 if __name__ =="__main__":
     post = generate_post("Short", "English", "Education", "Motivational")
+
     print(post)
