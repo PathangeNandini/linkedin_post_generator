@@ -13,7 +13,6 @@ def main():
 
     st.title("LinkedIn Post Generator")
 
-    # ---------------- SIDEBAR -------------------
     st.sidebar.markdown("## 🎛 Dashboard")
 
     quotes = [
@@ -23,35 +22,27 @@ def main():
         "You don’t need to be perfect, just be consistent.",
         "Push yourself, because no one else is going to do it for you.",
         "Action is the antidote to fear.",
-        "Don’t stop until you’re proud.",
+        "Don't stop until you're proud.",
         "Every day is a second chance.",
-        "Success is built from small daily efforts.",
-        "Dream it. Wish it. Do it.",
-        "You become what you believe.",
-        "Growth happens outside your comfort zone.",
-        "Your future depends on what you do today.",
-        "Great things never come from comfort zones.",
-        "Start where you are. Use what you have. Do what you can.",
     ]
 
     st.sidebar.info(random.choice(quotes))
-
     st.sidebar.metric("Posts Generated", st.session_state["generated_count"])
 
+    # --- FIXED HISTORY (FINAL VERSION) ---
     st.sidebar.markdown("### 📜 History")
 
-    # Collapsible short previews
     for idx, item in enumerate(st.session_state["history"], start=1):
-        preview_line = item.split("\n")[0][:60] + "..."
-        with st.sidebar.expander(f"Post {idx}: {preview_line}"):
-            st.sidebar.write(item)
+        preview_line = item.replace("\n", " ")[:50] + "..."
+        expander = st.sidebar.expander(f"Post {idx}: {preview_line}")
+        with expander:
+            st.write(item)
 
     st.sidebar.markdown("## 👩‍💻 About Me")
     st.sidebar.write("### **Nandini Pathange**")
     st.sidebar.write("I love learning new things and exploring anything interesting ✨")
     st.sidebar.success("Funny fact: I learn new things every day… mostly because I forget them by tomorrow! 😄")
 
-    # ---------------- MAIN UI -------------------
     fs = FewShotPosts()
 
     st.write("### Select Post Requirements")
@@ -78,7 +69,6 @@ def main():
         post = generate_post(selected_length, selected_language, selected_tag, selected_tone)
         hashtags = generate_hashtags(post)
 
-        # Update history & counter
         st.session_state["history"].append(post)
         st.session_state["generated_count"] += 1
 
