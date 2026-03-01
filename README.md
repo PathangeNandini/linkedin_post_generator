@@ -9,7 +9,10 @@ An AI-powered LinkedIn post generator that creates professional, motivational, a
 
 ✨ Built with **Streamlit + LangChain + Groq (LLaMA 3.3)**
 
----
+🔗 Live App Demo
+
+👉 **Try the Live App Here:**  
+https://43kbpengtu5kz2aubbadh3.streamlit.app/
 
 🌟 Features
 
@@ -44,3 +47,20 @@ Runs perfectly on **Streamlit Cloud**.
 │ ├── data.json
 │ └── processed_posts.json
 └── .streamlit/
+
+🛠 Technologies Used
+Python
+Streamlit
+LangChain
+Groq API (LLaMA Model)
+Pandas
+
+👩‍💻 About Me
+
+Nandini Pathange
+“I love learning new things and exploring anything interesting ✨”
+Funny fact: I learn new things every day… mostly because I forget them by tomorrow 😄
+
+If you like this project, please ⭐ the repository!
+
+If you want improvements or features added, feel free to reach out!
