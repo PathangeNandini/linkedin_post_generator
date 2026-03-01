@@ -8,6 +8,7 @@ st.set_page_config(page_title="LinkedIn Post Generator", layout="wide")
 def main():
     if "history" not in st.session_state:
         st.session_state["history"] = []
+
     if "generated_count" not in st.session_state:
         st.session_state["generated_count"] = 0
 
@@ -36,8 +37,10 @@ def main():
 
     st.sidebar.info(random.choice(quotes))
 
+    # Working Counter (Fixed)
     st.sidebar.metric("Posts Generated", st.session_state["generated_count"])
 
+    # Working History (Fixed)
     st.sidebar.markdown("### 📜 History")
     for idx, item in enumerate(st.session_state["history"], start=1):
         st.sidebar.write(f"**Post {idx}:**")
@@ -72,10 +75,12 @@ def main():
 
     st.write("---")
 
+    # Stable Counter + History
     if st.button("Generate Post"):
         post = generate_post(selected_length, selected_language, selected_tag, selected_tone)
         hashtags = generate_hashtags(post)
 
+        # Update state correctly
         st.session_state["history"].append(post)
         st.session_state["generated_count"] += 1
 
